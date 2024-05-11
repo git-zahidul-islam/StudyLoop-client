@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 
 
 const Registration = () => {
-    const { createUserWithEmail } = useContext(AuthContext)
+    const { createUserWithEmail, profileUpdate, user, setUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleRegister = (e) => {
@@ -22,6 +22,12 @@ const Registration = () => {
         createUserWithEmail(email,password)
         .then(result =>{
             console.log(result.user);
+            profileUpdate(name,photo)
+            .then(() => {
+                setUser({...user, photoURL: photo, displayName: name})
+            })
+            .catch(error=> console.error(error))
+
             navigate('/')
         })
         .catch(error =>{
