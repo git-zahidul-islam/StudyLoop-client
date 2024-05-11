@@ -42,7 +42,7 @@ const NavBar = () => {
     </div>
 
     return (
-        <div className={`navbar ${location.pathname == '/' ? 'bg-[#FFF8E3]' : 'bg-white'} px-10`}>
+        <div className={`navbar ${location.pathname == '/' ? 'bg-[#FFF8E3]' : 'bg-white'} lg:px-10 md:px-8 px-2`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
