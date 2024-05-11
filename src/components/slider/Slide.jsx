@@ -3,7 +3,7 @@ import bg1 from '../../assets/otherIMG/blob-haikei.svg'
 
 const Slide = ({text,des, image}) => {
     return (
-        <div>
+        <div className='h-[600px] flex flex-col justify-center'>
             <header className="dark:bg-gray-900">
                 <div className="container px-6 py-16 mx-auto">
                     <div className="items-center lg:flex">
