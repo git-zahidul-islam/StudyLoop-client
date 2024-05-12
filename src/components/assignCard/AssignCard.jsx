@@ -3,14 +3,12 @@ import { MdOutlineDifference } from "react-icons/md";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
 import { CiRead } from "react-icons/ci";
+import { Link } from "react-router-dom"
 
 
 
 const AssignCard = ({ assData, handleDelete }) => {
     const { diff, photo, title, mark, _id } = assData;
-    
-
-    
 
 
     return (
@@ -26,13 +24,15 @@ const AssignCard = ({ assData, handleDelete }) => {
                 <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{title}</h1>
                 <div className="text-white font-semibold flex w-full">
                     <div className="w-1/3 text-center bg-purple-300">
-                        <button className="p-3 flex items-center gap-3 justify-center w-full"><GrUpdate size={20}/>Update</button>
+                        <button className="p-3 flex items-center gap-3 justify-center w-full"><GrUpdate size={20} />Update</button>
                     </div>
                     <div className="w-1/3 text-center bg-purple-400">
-                        <button onClick={()=>handleDelete(_id)} className="p-3 flex items-center gap-3 justify-center w-full"><MdOutlineDeleteForever size={25}/>Delete</button>
+                        <button onClick={() => handleDelete(_id)} className="p-3 flex items-center gap-3 justify-center w-full"><MdOutlineDeleteForever size={25} />Delete</button>
                     </div>
                     <div className="w-1/3 text-center bg-purple-500">
-                        <button className="p-3 flex items-center gap-3 justify-center w-full"><CiRead size={25}/>View</button>
+                        <Link to={`/assignments/${_id}`}>
+                            <button className="p-3 flex items-center gap-3 justify-center w-full"><CiRead size={25} />View</button>
+                        </Link>
                     </div>
                 </div>
             </div>

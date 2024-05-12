@@ -7,6 +7,7 @@ import PendingAssignments from "../pages/PendingAssignments";
 import Registration from "../pages/Registration";
 import Login from "../pages/Login";
 import MyAttempted from "../components/myAttempted/MyAttempted";
+import AssignmentsDetails from "../pages/AssignmentsDetails";
 
 
 const router = createBrowserRouter([
@@ -21,6 +22,12 @@ const router = createBrowserRouter([
             {
                 path: '/assignments',
                 element: <Assignments></Assignments>
+            },
+            {
+                path: '/assignments/:id',
+                element: <AssignmentsDetails></AssignmentsDetails>,
+                loader: ({ params }) =>
+                    fetch(`${import.meta.env.VITE_WEBSITE_API}/assignments/${params.id}`)
             },
             {
                 path: '/create-assignments',
