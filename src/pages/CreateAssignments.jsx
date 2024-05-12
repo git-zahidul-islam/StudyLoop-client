@@ -2,9 +2,18 @@ import { MdLibraryAdd } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
+import axios from "axios";
+import { toast } from "react-toastify";
+import photo from "../assets/student3.png"
+
+
 
 const CreateAssignments = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const {user} = useAuth()
+  const email = user?.email;
+
 
   const handleForm = (e) => {
     e.preventDefault()
@@ -15,13 +24,23 @@ const CreateAssignments = () => {
     const date = form.date.value;
     const diff = form.diff.value;
     const description = form.description.value;
-    console.table(title,mark,photo,date,diff,description);
+    const assignmentsInfo = {title,mark,photo,date,diff,email,description}
+    console.log(assignmentsInfo);
+    
+    // fetch use axios
+    axios.post(`${import.meta.env.VITE_WEBSITE_API}/assignments`,assignmentsInfo)
+    .then(res => {
+      console.log("data post done",res.data);
+      toast.success('Assignments Added')
+    })
+    .catch(error => console.error(error))
   }
+
 
 
     return (
       <div className="w-9/12 mx-auto my-20 flex lg:flex-row md:flex-row flex-col-reverse">
-        <div className="md:w-4/12 bg-[#807182] p-10">
+        <div className="md:w-4/12 bg-[#807182] p-10" style={{ backgroundImage: `url(${photo})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'left bottom'}}>
           <h1 className="text-2xl font-bold text-white flex items-center gap-4"><span className="text-[#F9C7C2]"><MdLibraryAdd size={35}/></span>Assignments</h1>
         </div>
         <div className="md:w-8/12 bg-[#F9C7C2] lg:p-10 md:p-10 p-2">
