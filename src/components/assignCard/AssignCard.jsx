@@ -24,7 +24,9 @@ const AssignCard = ({ assData, handleDelete }) => {
                 <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{title}</h1>
                 <div className="text-white font-semibold flex w-full">
                     <div className="w-1/3 text-center bg-purple-300">
+                        <Link to={`/update-assignments/${_id}`}>
                         <button className="p-3 flex items-center gap-3 justify-center w-full"><GrUpdate size={20} />Update</button>
+                        </Link>
                     </div>
                     <div className="w-1/3 text-center bg-purple-400">
                         <button onClick={() => handleDelete(_id)} className="p-3 flex items-center gap-3 justify-center w-full"><MdOutlineDeleteForever size={25} />Delete</button>

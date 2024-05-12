@@ -8,6 +8,7 @@ import Registration from "../pages/Registration";
 import Login from "../pages/Login";
 import MyAttempted from "../components/myAttempted/MyAttempted";
 import AssignmentsDetails from "../pages/AssignmentsDetails";
+import UpdateAssignments from "../pages/UpdateAssignments";
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,12 @@ const router = createBrowserRouter([
             {
                 path: '/my-attempted',
                 element: <MyAttempted></MyAttempted>
+            },
+            {
+                path: '/update-assignments/:id',
+                element: <UpdateAssignments></UpdateAssignments>,
+                loader: ({ params }) =>
+                    fetch(`${import.meta.env.VITE_WEBSITE_API}/assignments/${params.id}`)
             }
         ]
     },
