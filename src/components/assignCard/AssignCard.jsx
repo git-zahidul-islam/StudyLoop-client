@@ -4,8 +4,14 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
 import { CiRead } from "react-icons/ci";
 
-const AssignCard = ({ assData }) => {
-    const { diff, photo, title, mark } = assData;
+
+
+const AssignCard = ({ assData, handleDelete }) => {
+    const { diff, photo, title, mark, _id } = assData;
+    
+
+    
+
 
     return (
         <div className=" overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
@@ -23,7 +29,7 @@ const AssignCard = ({ assData }) => {
                         <button className="p-3 flex items-center gap-3 justify-center w-full"><GrUpdate size={20}/>Update</button>
                     </div>
                     <div className="w-1/3 text-center bg-purple-400">
-                        <button className="p-3 flex items-center gap-3 justify-center w-full"><MdOutlineDeleteForever size={25}/>Delete</button>
+                        <button onClick={()=>handleDelete(_id)} className="p-3 flex items-center gap-3 justify-center w-full"><MdOutlineDeleteForever size={25}/>Delete</button>
                     </div>
                     <div className="w-1/3 text-center bg-purple-500">
                         <button className="p-3 flex items-center gap-3 justify-center w-full"><CiRead size={25}/>View</button>
