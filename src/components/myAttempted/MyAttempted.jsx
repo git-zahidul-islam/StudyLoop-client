@@ -8,10 +8,11 @@ const MyAttempted = () => {
 
     const [data, setData] = useState([])
     const { user } = useAuth()
-    console.log(data);
+    // console.log(data);
+    // console.log("user data:",user);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_WEBSITE_API}/submit-assignment/${user?.email}`)
+        axios.get(`${import.meta.env.VITE_WEBSITE_API}/my-attempt/${user?.email}`)
             .then(res => {
                 setData(res.data)
             })
@@ -38,7 +39,7 @@ const MyAttempted = () => {
                                 <td className="border-r-2">{ass?.title}</td>
                                 <td className="border-r-2">{ass?.mark}</td>
                                 <td className="border-r-2">{ass?.obtainMark}</td>
-                                <td className="border-r-2">{ass?.status}</td>
+                                <td className={`border-r-2`}><p className={`${ass?.status === "pending" ? 'bg-red-400' : 'bg-green-400'} rounded-3xl text-white text-base`}>{ass?.status}</p></td>
                                 <td className="border-r-2">{ass?.feedback}</td>
                             </tr>)
                         }

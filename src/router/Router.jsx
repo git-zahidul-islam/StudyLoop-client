@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import MyAttempted from "../components/myAttempted/MyAttempted";
 import AssignmentsDetails from "../pages/AssignmentsDetails";
 import UpdateAssignments from "../pages/UpdateAssignments";
+import MarkGive from "../pages/MarkGive";
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,12 @@ const router = createBrowserRouter([
                 element: <UpdateAssignments></UpdateAssignments>,
                 loader: ({ params }) =>
                     fetch(`${import.meta.env.VITE_WEBSITE_API}/assignments/${params.id}`)
+            },
+            {
+                path: '/pending-assignments/:id',
+                element: <MarkGive></MarkGive>,
+                loader: ({ params }) =>
+                    fetch(`${import.meta.env.VITE_WEBSITE_API}/submit-assignment/${params.id}`)
             }
         ]
     },

@@ -67,7 +67,7 @@ const UpdateAssignments = () => {
                         <div className="">
                             <label htmlFor="title" className="text-sm">Due Date</label>
                             <div className="">
-                                <DatePicker name="date" className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300 outline-none p-2" selected={startDate} onChange={(date) => setStartDate(date)} />
+                                <DatePicker name="date" value={date} className="w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300 outline-none p-2" selected={startDate} onChange={(date) => setStartDate(date)} />
                                 {/* <input type="date" defaultValue={date} name="date" id="date" /> */}
                             </div>
                         </div>
