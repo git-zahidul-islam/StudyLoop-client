@@ -1,15 +1,16 @@
 import Banner from "../banner/Banner";
 import Faq from "../faq/Faq";
+import Feature from "../feature/Feature";
 
 
 const Home = () => {
     return (
-        <div>
+        <div className="space-y-10">
             <div className="bg-[#FFF8E3]">
                 <Banner></Banner>
             </div>
-            <div className="min-h-96 bg-slate-50">
-                <h1>feature section [here have some card]....</h1>
+            <div className="min-h-96">
+                <Feature></Feature>
             </div>
             <div className="">
                 <Faq></Faq>
