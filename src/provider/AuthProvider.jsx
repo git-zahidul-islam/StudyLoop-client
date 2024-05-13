@@ -2,6 +2,7 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import app from "../firebase/firebase.config";
+import axios from "axios";
 
 
 
@@ -47,14 +48,31 @@ const AuthProvider = ({ children }) => {
     // observer 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            // 2 line is cookie
+            const userEmail = currentUser?.email || user?.email
+            const loggedUser = { email: userEmail }
             setUser(currentUser)
             setLoading(false)
             console.log("the observer is:",currentUser);
+            // cookie start
+            if (currentUser) {
+                axios.post('https://car-doctor-server-v2-ashen.vercel.app/jwt', loggedUser, { withCredentials: true })
+                    .then(() => {
+                        // console.log("the token is:", res.data);
+                    })
+            }
+            else {
+                axios.post('https://car-doctor-server-v2-ashen.vercel.app/logout', loggedUser, { withCredentials: true })
+                    .then(() => {
+                        // console.log("logout", res.data);
+                    })
+            }
+            // cookie end
         })
         return () => {
             unSubscribe()
         }
-    }, [auth])
+    }, [auth, user?.email])
 
     const allData = {
         createUserWithEmail,
