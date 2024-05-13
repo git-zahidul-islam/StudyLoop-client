@@ -10,6 +10,7 @@ import MyAttempted from "../components/myAttempted/MyAttempted";
 import AssignmentsDetails from "../pages/AssignmentsDetails";
 import UpdateAssignments from "../pages/UpdateAssignments";
 import MarkGive from "../pages/MarkGive";
+import PrivateRouter from "./PrivateRouter";
 
 
 const router = createBrowserRouter([
@@ -33,11 +34,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/create-assignments',
-                element: <CreateAssignments></CreateAssignments>
+                element: <PrivateRouter><CreateAssignments></CreateAssignments></PrivateRouter>
             },
             {
                 path: '/pending-assignments',
-                element: <PendingAssignments></PendingAssignments>
+                element: <PrivateRouter>
+                    <PendingAssignments></PendingAssignments>
+                </PrivateRouter>
             },
             {
                 path: '/registration',
@@ -49,7 +52,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/my-attempted',
-                element: <MyAttempted></MyAttempted>
+                element: <PrivateRouter>
+                    <MyAttempted></MyAttempted>
+                </PrivateRouter>
             },
             {
                 path: '/update-assignments/:id',

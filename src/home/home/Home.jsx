@@ -1,6 +1,6 @@
 import Banner from "../banner/Banner";
 import Faq from "../faq/Faq";
-import Feature from "../feature/Feature";
+// import Feature from "../feature/Feature";
 
 
 const Home = () => {
@@ -10,7 +10,8 @@ const Home = () => {
                 <Banner></Banner>
             </div>
             <div className="min-h-96">
-                <Feature></Feature>
+                <h1>this is feature section</h1>
+                {/* <Feature></Feature> */}
             </div>
             <div className="">
                 <Faq></Faq>

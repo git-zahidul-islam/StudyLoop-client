@@ -29,7 +29,7 @@ const CreateAssignments = () => {
     console.log(assignmentsInfo);
 
     // fetch data use axios
-    axios.post(`${import.meta.env.VITE_WEBSITE_API}/assignments`,assignmentsInfo)
+    axios.post(`${import.meta.env.VITE_WEBSITE_API}/assignments`,assignmentsInfo,{withCredentials: true})
     .then(res => {
       console.log("data post done",res.data);
       toast.success('Assignments Added')

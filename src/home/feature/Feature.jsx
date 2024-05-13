@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 const Feature = () => {
     const [data, setData] = useState([])
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_WEBSITE_API}/assignments`)
+        axios.get(`${import.meta.env.VITE_WEBSITE_API}/assignments`,{withCredentials: true})
             .then(res => {
-                console.log("the getting data:", res.data);
+                // console.log("the getting data:", res.data);
                 setData(res.data)
             })
     }, [])
