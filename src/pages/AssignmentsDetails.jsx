@@ -24,9 +24,10 @@ const customStyles = {
 
 const AssignmentsDetails = () => {
     const loaderData = useLoaderData()
-    const { title, description, diff, mark, photo, due_date, _id } = loaderData;
+    const { title, description, diff, mark, photo, date, _id } = loaderData;
     const { user } = useAuth()
     const email = user?.email;
+    const name = user?.displayName;
 
 
     // modal part
@@ -43,13 +44,13 @@ const AssignmentsDetails = () => {
         const form = e.target;
         const assignmentsLink = form.assignmentsLink.value;
         const notes = form.notes.value;
-        const data = {assignmentsLink,notes,status: 'pending',email,title,mark,feedback: 'wait',obtainMark: 'wait'};
+        const data = { assignmentsLink, notes, status: 'pending', email, title, mark, feedback: 'wait', obtainMark: 'wait', examinee_name: name };
         console.log(data);
 
-        if(assignmentsLink.length < 5){
+        if (assignmentsLink.length < 5) {
             return toast.error('Give Google Doc link')
         }
-    
+
         axios.post(`${import.meta.env.VITE_WEBSITE_API}/submit-assignment`, data)
             .then(res => {
                 console.log("assignments submit", res.data);
@@ -73,7 +74,7 @@ const AssignmentsDetails = () => {
                 <div className="w-4/12 border-l-4 border-gray-700 ml-5 px-5 space-y-5 bg-[#F9C7C2]">
                     <h1 className="text-xl font-semibold">Difficulty Label: {diff}</h1>
                     <h1 className="text-xl font-semibold">Marks: {mark}</h1>
-                    <h1 className="text-xl font-semibold">Due Date: {due_date}</h1>
+                    <h1 className="text-xl font-semibold">Due Date: {date}</h1>
                     <div className="flex justify-center flex-col">
                         <h1 className="text-center">Take Assignments</h1>
                         <button onClick={openModal} className="p-4 bg-red-400">Modal</button>
