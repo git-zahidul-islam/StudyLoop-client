@@ -1,8 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import Modal from 'react-modal';
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
+import Swal from 'sweetalert2'
+import { toast } from "react-toastify";
 // modal part
 Modal.setAppElement('#root');
 const customStyles = {
@@ -41,12 +43,21 @@ const AssignmentsDetails = () => {
         const form = e.target;
         const assignmentsLink = form.assignmentsLink.value;
         const notes = form.notes.value;
-        const data = { assignmentsLink, notes, status: 'pending', email, _id }
+        const data = {assignmentsLink,notes,status: 'pending',email,title,mark,feedback: 'wait',obtainMark: 'wait'};
         console.log(data);
 
+        if(assignmentsLink.length < 5){
+            return toast.error('Give Google Doc link')
+        }
+    
         axios.post(`${import.meta.env.VITE_WEBSITE_API}/submit-assignment`, data)
             .then(res => {
                 console.log("assignments submit", res.data);
+                Swal.fire({
+                    title: "Good job!",
+                    text: "Assignments Submit Successfully",
+                    icon: "success"
+                });
             })
 
         setIsOpen(false);
@@ -84,7 +95,7 @@ const AssignmentsDetails = () => {
                                     </div>
                                     <div className="flex justify-between">
                                         <button className="px-4 py-1 rounded-2xl border-2 border-pink-600" onClick={closeModal}>close</button>
-                                        <input className="px-4 py-1 rounded-2xl border-2 border-pink-600" type="submit" value="Submit" />
+                                        <input className="px-4 py-1 rounded-2xl border-2 border-pink-600 cursor-pointer" type="submit" value="Submit" />
                                     </div>
                                 </form>
                             </div>
