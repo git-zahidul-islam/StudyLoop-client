@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import AssignCard from "../components/assignCard/AssignCard";
 import useAuth from "../hooks/useAuth";
 import Swal from 'sweetalert2'
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -49,8 +50,11 @@ const Assignments = () => {
 
     return (
         <div className="container mx-auto my-10">
+            <Helmet>
+                <title>Study Loop | Assignment</title>
+            </Helmet>
             <div className="text-center mb-10 w-2/12 mx-auto">
-                <label htmlFor="select" className="block">Choose Category</label>
+                <label htmlFor="select" className="block text-lg font-semibold">Choose Difficulty</label>
                 <select
                     onChange={e => setFilter(e.target.value)}
                     value={filter}

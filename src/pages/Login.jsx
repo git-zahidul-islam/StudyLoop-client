@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import loginImage from '../assets/otherIMG/login-svg.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { userLogin, loginWithGoogle } = useContext(AuthContext)
@@ -34,6 +35,9 @@ const Login = () => {
 
     return (
         <div className="bg-white dark:bg-gray-900">
+            <Helmet>
+                <title>Study Loop | Login</title>
+            </Helmet>
             <div className="flex justify-center h-screen">
                 <div className="hidden bg-cover lg:block lg:w-2/3" style={{ backgroundImage: `url(${loginImage})` }}>
                     <div className="flex items-center h-full px-20 bg-[#00000060] bg-opacity-40">

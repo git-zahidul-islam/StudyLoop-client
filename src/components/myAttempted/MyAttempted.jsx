@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -20,6 +21,9 @@ const MyAttempted = () => {
 
     return (
         <div className="container mx-auto min-h-[60vh] my-5">
+            <Helmet>
+                <title>Study Loop | My Attempt</title>
+            </Helmet>
             <h1 className="text-lg font-bold">Your Submit Assignments</h1>
             <div className="overflow-x-auto">
                 <table className="table text-center border-2">

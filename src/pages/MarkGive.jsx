@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { Helmet } from 'react-helmet-async';
 
 
 const MarkGive = () => {
@@ -36,15 +36,18 @@ const MarkGive = () => {
 
 return (
     <div className="container mx-auto my-10">
+        <Helmet>
+            <title>Study Loop | Give Number</title>
+        </Helmet>
         <div className="flex items-center flex-col">
             <h1 className="text-lg font-semibold mb-5">Mark Given Form</h1>
             <form onSubmit={handleMarkUpdate}>
                 <div className="flex gap-5 p-4 lg:flex-row md:flex-row flex-col shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
-                    <div className="bg-[#807182] text-white p-4 lg:w-[600px] md:w-96 space-y-3">
+                    <div className="bg-[#857288a6] text-white p-4 lg:w-[600px] md:w-96 space-y-3">
                         <div className="space-y-2">
                             <h1 className="text-xl">Assignments Link</h1>
-                            <p className="border-2 border-[#F9C7C2] rounded-xl min-h-20 p-2">{assignmentsLink}</p>
-                            <button className="p-2 bg-[#0c0b0ae4] mt-2">view link</button>
+                            <p className="border-2 border-[#181413d2] rounded-xl min-h-20 p-2">{assignmentsLink}</p>
+                            <a href="#" className="p-2 bg-[#F9C7C2] mt-5 block text-center rounded-3xl text-black">View Link</a>
                         </div>
                         <div className="space-y-2">
                             <h1 className="text-xl">Examinee Notes</h1>

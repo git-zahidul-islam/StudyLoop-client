@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import { toast } from "react-toastify";
 import photo from "../assets/student3.png"
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -41,6 +42,9 @@ const CreateAssignments = () => {
 
   return (
     <div className="w-9/12 mx-auto my-20 flex lg:flex-row md:flex-row flex-col-reverse">
+      <Helmet>
+        <title>Study Loop | Create Assignments</title>
+      </Helmet>
       <div className="md:w-4/12 bg-[#807182] p-10" style={{ backgroundImage: `url(${photo})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'left bottom' }}>
         <h1 className="text-2xl font-bold text-white flex items-center gap-4"><span className="text-[#F9C7C2]"><MdLibraryAdd size={35} /></span>Assignments</h1>
       </div>

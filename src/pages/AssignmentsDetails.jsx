@@ -5,6 +5,8 @@ import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { toast } from "react-toastify";
+import { Helmet } from 'react-helmet-async';
+
 // modal part
 Modal.setAppElement('#root');
 const customStyles = {
@@ -66,7 +68,10 @@ const AssignmentsDetails = () => {
 
 
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto my-10">
+            <Helmet>
+                <title>Study Loop | {title}</title>
+            </Helmet>
             <div className="flex">
                 <div className="w-8/12 h-[550px]">
                     <img className="w-full h-full" src={photo} alt="image" />
@@ -76,8 +81,7 @@ const AssignmentsDetails = () => {
                     <h1 className="text-xl font-semibold">Marks: {mark}</h1>
                     <h1 className="text-xl font-semibold">Due Date: {date}</h1>
                     <div className="flex justify-center flex-col">
-                        <h1 className="text-center">Take Assignments</h1>
-                        <button onClick={openModal} className="p-4 bg-red-400">Modal</button>
+                        <button onClick={openModal} className="p-4 bg-red-400 text-lg font-bold text-white">Submit Assignments</button>
                         <Modal
                             isOpen={modalIsOpen}
                             // onAfterOpen={afterOpenModal}

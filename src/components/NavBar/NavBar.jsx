@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Dropdown from "../dropdown/DropDown";
-
+import logo from '../../assets/otherIMG/logo.png'
 
 const NavBar = () => {
     const { user, userLogOut } = useContext(AuthContext)
@@ -58,7 +58,7 @@ const NavBar = () => {
                         {navLink}
                     </ul>
                 </div>
-                <Link to={'/'} className="text-xl font-bold text-green-400">Study Loop</Link>
+                <Link to={'/'} className="text-xl font-bold text-green-400 w-52"><img className="w-full h-full" src={logo} alt="logo" /></Link>
             </div>
             <div className="navbar-end">
                 <div className="navbar-center hidden lg:flex">
