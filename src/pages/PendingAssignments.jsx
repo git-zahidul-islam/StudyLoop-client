@@ -11,7 +11,6 @@ const PendingAssignments = () => {
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_WEBSITE_API}/pending-assignments`,{withCredentials: true})
             .then(res => {
-                console.log("the getting", res.data);
                 setData(res.data)
             })
     }, [])

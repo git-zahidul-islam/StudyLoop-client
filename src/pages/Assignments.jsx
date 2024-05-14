@@ -15,7 +15,6 @@ const Assignments = () => {
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_WEBSITE_API}/assignments?filter=${filter}`)
             .then(res => {
-                console.log("the getting data:", res.data);
                 setData(res.data)
             })
     }, [filter])

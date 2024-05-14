@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
             const loggedUser = { email: userEmail }
             setUser(currentUser)
             setLoading(false)
-            console.log("the observer is:",currentUser);
+            // console.log("the observer is:",currentUser);
             // cookie start
             if (currentUser) {
                 axios.post('https://car-doctor-server-v2-ashen.vercel.app/jwt', loggedUser, { withCredentials: true })

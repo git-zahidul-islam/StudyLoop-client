@@ -10,7 +10,7 @@ const MarkGive = () => {
     const [data,setData] = useState(loaderData)
     const { obtainMark, mark, feedback, assignmentsLink, notes,_id } = data;
     const navigate = useNavigate()
-    console.log("mark", loaderData);
+    // console.log("mark", loaderData);
 
     
 
