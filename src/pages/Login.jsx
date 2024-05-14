@@ -92,7 +92,7 @@ const Login = () => {
                                     </defs>
                                 </svg>
 
-                                <span>Sign in with Google</span>
+                                <span>Sign In With Google</span>
                             </button>
                             {/* <hr className='mt-5' /> */}
                         </div>
