@@ -11,6 +11,7 @@ const Assignments = () => {
     const [data, setData] = useState([])
     const [filter, setFilter] = useState(' ')
     const { user } = useAuth()
+    // console.log(user?.email);
 
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_WEBSITE_API}/assignments?filter=${filter}`)
@@ -19,7 +20,7 @@ const Assignments = () => {
             })
     }, [filter])
 
-    const handleDelete = (id) => {
+    const handleDelete = (email,_id) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -30,7 +31,7 @@ const Assignments = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`${import.meta.env.VITE_WEBSITE_API}/assignments/${id}?email=${user?.email}`)
+                axios.delete(`${import.meta.env.VITE_WEBSITE_API}/assignments/${user?.email}?email=${email}`)
                     .then(res => {
                         if (res.data.deletedCount > 0){
                             Swal.fire({
@@ -38,9 +39,16 @@ const Assignments = () => {
                                 text: "Your Assignment successfully deleted.",
                                 icon: "success"
                             });
+                            const remaining = data.filter(ass => ass._id !== _id)
+                            setData(remaining)
                         }
-                        const remaining = data.filter(ass => ass._id !== id)
-                        setData(remaining)
+                        if (res.data.message == 'unAuthorized'){
+                            Swal.fire({
+                                title: "UnAuthorized!",
+                                text: "You are not Assignments Creator",
+                                icon: "error"
+                            });
+                        }
                     })
             }
         });

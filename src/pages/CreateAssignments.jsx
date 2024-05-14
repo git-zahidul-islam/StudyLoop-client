@@ -26,16 +26,15 @@ const CreateAssignments = () => {
     const date = form.date.value;
     const diff = form.diff.value;
     const description = form.description.value;
-    const assignmentsInfo = { title, mark, photo, date, diff, description, email}
-    console.log(assignmentsInfo);
+    const assignmentsInfo = { title, mark, photo, date, diff, description, email }
 
     // fetch data use axios
-    axios.post(`${import.meta.env.VITE_WEBSITE_API}/assignments`,assignmentsInfo,{withCredentials: true})
-    .then(res => {
-      console.log("data post done",res.data);
-      toast.success('Assignments Added')
-    })
-    .catch(error => console.error(error))
+    axios.post(`${import.meta.env.VITE_WEBSITE_API}/assignments`, assignmentsInfo, { withCredentials: true })
+      .then(() => {
+        toast.success('Assignments Added')
+      })
+      .catch(error => console.error(error))
+    form.reset()
   }
 
 

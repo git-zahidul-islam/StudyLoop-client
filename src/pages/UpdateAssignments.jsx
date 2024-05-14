@@ -53,7 +53,7 @@ const UpdateAssignments = () => {
                 <h1 className="text-2xl font-bold text-white flex items-center gap-4"><span className="text-[#F9C7C2]"><MdLibraryAdd size={35} /></span>Assignments</h1>
             </div>
             <div className="md:w-8/12 bg-[#F9C7C2] lg:p-10 md:p-10 p-2">
-                <h1 className="text-xl font-bold mb-5">Create Assignments</h1>
+                <h1 className="text-xl font-bold mb-5">Update Assignments</h1>
                 <form onSubmit={handleForm}>
                     <div className="">
                         <div className="">

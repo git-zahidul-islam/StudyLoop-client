@@ -8,9 +8,9 @@ import { Link } from "react-router-dom"
 
 
 const AssignCard = ({ assData, handleDelete }) => {
-    const { diff, photo, title, mark, _id } = assData;
+    const { diff, photo, title, mark, _id,email } = assData;
 
-
+    
     return (
         <div className=" overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
             <img className="object-cover object-center w-full h-56" src={photo} alt="avatar" />
@@ -29,7 +29,7 @@ const AssignCard = ({ assData, handleDelete }) => {
                         </Link>
                     </div>
                     <div className="w-1/3 text-center bg-purple-400">
-                        <button onClick={() => handleDelete(_id)} className="p-3 flex items-center gap-3 justify-center w-full"><MdOutlineDeleteForever size={25} />Delete</button>
+                        <button onClick={() => handleDelete(email,_id)} className="p-3 flex items-center gap-3 justify-center w-full"><MdOutlineDeleteForever size={25} />Delete</button>
                     </div>
                     <div className="w-1/3 text-center bg-purple-500">
                         <Link to={`/assignments/${_id}`}>

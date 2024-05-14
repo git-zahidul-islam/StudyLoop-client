@@ -14,7 +14,7 @@ const Slide = ({text,des, image}) => {
                             </div>
                         </div>
 
-                        <div style={{ backgroundImage: `url(${bg1})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '620px' }} className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
+                        <div style={{ backgroundImage: `url(${"https://i.ibb.co/r7Gbrj7/blob-haikei.png"})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '620px' }} className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
                             <img className="w-full h-full max-w-md" src={image} alt="email illustration vector art" />
                         </div>
                     </div>

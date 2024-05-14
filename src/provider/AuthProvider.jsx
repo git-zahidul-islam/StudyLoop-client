@@ -57,8 +57,8 @@ const AuthProvider = ({ children }) => {
             // cookie start
             if (currentUser) {
                 axios.post(`${import.meta.env.VITE_WEBSITE_API}/jwt`, loggedUser, { withCredentials: true })
-                    .then((res) => {
-                        console.log("the token is:", res.data);
+                    .then(() => {
+                        // console.log("the token is:", res.data);
                     })
             }
             else {
