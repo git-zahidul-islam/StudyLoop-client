@@ -9,7 +9,7 @@ const PendingAssignments = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_WEBSITE_API}/pending-assignments`,{withCredentials: true})
+        axios.get(`${import.meta.env.VITE_WEBSITE_API}/pending-assignments?status=pending`,{withCredentials: true})
             .then(res => {
                 setData(res.data)
             })

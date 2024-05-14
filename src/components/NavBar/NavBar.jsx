@@ -20,7 +20,6 @@ const NavBar = () => {
         console.log("logout clicked");
         userLogOut()
             .then(() => {
-                // console.log("logout successfully");
                 navigate('/')
             })
             .catch(error => console.error(error))

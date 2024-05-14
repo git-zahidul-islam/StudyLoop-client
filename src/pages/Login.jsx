@@ -1,28 +1,45 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import loginImage from '../assets/otherIMG/login-svg.svg'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../provider/AuthProvider';
 import { Helmet } from 'react-helmet-async';
+import login_side_image from '../assets/otherIMG/login-side.png'
+import logo from '../assets/otherIMG/logo.png'
+import { MdOutlineDangerous } from "react-icons/md";
 
 const Login = () => {
     const { userLogin, loginWithGoogle } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
+    const [error,setError] =useState(null)
 
     const handleLogin = (e) => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.table(email, password)
+
+        // validation
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setError('Type Valid Email')
+            return
+        }
+        if (password.length < 6) {
+            setError('Type password')
+            return;
+        }
+
         // login
         userLogin(email, password)
             .then(result => {
                 console.log("login successfully", result);
                 navigate(location?.state ? location.state : '/')
             })
-            .catch(error => console.error(error))
+            .catch(() => {
+                setError('User Not Match')
+            })
+            form.reset()
     }
+
     const handleGoogleLogin = () => {
         loginWithGoogle()
         .then(result => {
@@ -30,6 +47,7 @@ const Login = () => {
             navigate(location?.state ? location.state : '/')
         })
         .catch(error => console.error(error))
+
     }
 
 
@@ -39,15 +57,13 @@ const Login = () => {
                 <title>Study Loop | Login</title>
             </Helmet>
             <div className="flex justify-center h-screen">
-                <div className="hidden bg-cover lg:block lg:w-2/3" style={{ backgroundImage: `url(${loginImage})` }}>
-                    <div className="flex items-center h-full px-20 bg-[#00000060] bg-opacity-40">
+                <div className="hidden bg-cover lg:block lg:w-2/3" style={{ backgroundImage: `url(${login_side_image})` }}>
+                    <div className="flex items-center h-full px-20 bg-[#000000a2]">
                         <div>
-                            <h2 className="text-2xl font-bold text-white sm:text-3xl">Meraki UI</h2>
+                            <h2 className="text-2xl font-bold text-white sm:text-3xl">Welcome to Study Loop</h2>
 
-                            <p className="max-w-xl mt-3 text-gray-300">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
-                                autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus
-                                molestiae
+                            <p className="max-w-xl mt-3 text-base font-semibold text-gray-200">
+                                For Better Experiences Ready to Login
                             </p>
                         </div>
                     </div>
@@ -55,12 +71,12 @@ const Login = () => {
 
                 <div className="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
                     <div className="flex-1">
-                        <div className="text-center">
+                        <div className="text-center mb-5">
                             <div className="flex justify-center mx-auto">
-                                <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt="" />
+                                <img className="w-auto h-7 sm:h-8" src={logo} alt="" />
                             </div>
 
-                            <p className="mt-3 text-gray-500 dark:text-gray-300 mb-5">Sign in to access your account</p>
+                            <p className="mt-3 text-gray-500 dark:text-gray-300 mb-5">Sign in to <span className='text-[#d55ca0]'>access</span> your account</p>
                             <button onClick={handleGoogleLogin} className="w-full bg-white flex items-center text-gray-700 dark:text-gray-300 justify-center gap-x-3 text-sm sm:text-base  dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-800 rounded-lg hover:bg-gray-100 duration-300 transition-colors border px-8 py-2.5">
                                 <svg className="w-5 h-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g clipPath="url(#clip0_3033_94454)">
@@ -80,7 +96,16 @@ const Login = () => {
                             </button>
                             {/* <hr className='mt-5' /> */}
                         </div>
+                        {
+                            error &&
+                            <div className="border-[1px] border-red-300 bg-red-100 p-2 flex gap-1">
 
+                                <MdOutlineDangerous size={21} className="text-red-700 mt-[2px]" />
+                                <div>
+                                    <p>{error}</p>
+                                </div>
+                            </div>
+                        }
                         <div className="mt-8">
                             <form onSubmit={handleLogin}>
                                 <div>
@@ -98,12 +123,12 @@ const Login = () => {
                                 </div>
 
                                 <div className="mt-6">
-                                    <input type="submit" value="Sign In" className="cursor-pointer w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50" />
+                                    <input type="submit" value="Sign In" className="cursor-pointer w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-[#FAA384] rounded-lg hover:bg-[#faa384da]" />
                                 </div>
 
                             </form>
 
-                            <p className="mt-6 text-sm text-center text-gray-400">Don&#x27;t have an account yet? <Link to={'/registration'} className="text-blue-500 focus:outline-none focus:underline hover:underline">Sign up</Link>.</p>
+                            <p className="mt-6 text-sm text-center text-gray-400">Don&#x27;t have an account yet? <Link to={'/registration'} className="text-[#e8754b] focus:outline-none focus:underline hover:underline text-lg">Sign up</Link>.</p>
                         </div>
                     </div>
                 </div>

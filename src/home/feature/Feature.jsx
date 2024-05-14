@@ -18,11 +18,11 @@ const Feature = () => {
     return (
         <div className="flex flex-col justify-center">
             <h1 className="text-center text-xl font-medium">The Most popular Assignments</h1>
-            <p className="w-8/12 text-gray-600 mx-auto text-center">Welcome to the world of largest assignment Community, you can get your assignment from here</p>
+            <p className="w-8/12 text-gray-600 mx-auto text-center text-base">Welcome to the world of largest assignment Community, you can get your assignment from here</p>
             <div className="grid md:grid-cols-3 gap-5 px-3 mt-8">
                     {
                         data.slice(0, 3).map(ass => <div key={ass._id} className="">
-                            <div className=" overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                            <div className=" overflow-hidden bg-white rounded-xl shadow-lg dark:bg-gray-800">
                                 <img className="object-cover object-center w-full lg:h-56 md:h-48 h-36" src={ass?.photo} alt="avatar" />
 
                                 <div className="flex items-center justify-around py-3 bg-gray-900">
