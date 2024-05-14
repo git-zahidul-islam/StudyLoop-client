@@ -56,13 +56,13 @@ const AuthProvider = ({ children }) => {
             // console.log("the observer is:",currentUser);
             // cookie start
             if (currentUser) {
-                axios.post('https://car-doctor-server-v2-ashen.vercel.app/jwt', loggedUser, { withCredentials: true })
-                    .then(() => {
-                        // console.log("the token is:", res.data);
+                axios.post(`${import.meta.env.VITE_WEBSITE_API}/jwt`, loggedUser, { withCredentials: true })
+                    .then((res) => {
+                        console.log("the token is:", res.data);
                     })
             }
             else {
-                axios.post('https://car-doctor-server-v2-ashen.vercel.app/logout', loggedUser, { withCredentials: true })
+                axios.post(`${import.meta.env.VITE_WEBSITE_API}/logout`, loggedUser, { withCredentials: true })
                     .then(() => {
                         // console.log("logout", res.data);
                     })

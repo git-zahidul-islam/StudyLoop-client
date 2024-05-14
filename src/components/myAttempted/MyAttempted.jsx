@@ -13,7 +13,7 @@ const MyAttempted = () => {
     // console.log("user data:",user);
 
     useEffect(() => {
-        axios.get(`${import.meta.env.VITE_WEBSITE_API}/my-attempt/${user?.email}`,{withCredentials: true})
+        axios.get(`${import.meta.env.VITE_WEBSITE_API}/my-attempt?email=${user?.email}`,{withCredentials: true})
             .then(res => {
                 setData(res.data)
             })

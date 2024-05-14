@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Dropdown from "../dropdown/DropDown";
 import logo from '../../assets/otherIMG/logo.png'
@@ -8,6 +8,7 @@ const NavBar = () => {
     const { user, userLogOut } = useContext(AuthContext)
     const location = useLocation()
     const [theme, setTheme] = useState("light")
+    const navigate = useNavigate()
 
     useEffect(() => {
         localStorage.setItem('theme', theme)
@@ -18,8 +19,9 @@ const NavBar = () => {
     const handleLogout = () => {
         console.log("logout clicked");
         userLogOut()
-            .then(result => {
-                console.log("logout successfully", result);
+            .then(() => {
+                // console.log("logout successfully");
+                navigate('/')
             })
             .catch(error => console.error(error))
     }
