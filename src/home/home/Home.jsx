@@ -1,3 +1,4 @@
+import Subscribe from "../../components/subscribe/Subscribe";
 import Banner from "../banner/Banner";
 import Faq from "../faq/Faq";
 import Feature from "../feature/Feature";
@@ -14,11 +15,13 @@ const Home = () => {
                 <Banner></Banner>
             </div>
             <div className="min-h-96">
-                {/* <h1>this is feature section</h1> */}
                 <Feature></Feature>
             </div>
             <div className="">
                 <Faq></Faq>
+            </div>
+            <div>
+                <Subscribe></Subscribe>
             </div>
         </div>
     );

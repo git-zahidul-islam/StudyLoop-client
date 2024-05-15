@@ -20,7 +20,7 @@ const MyAttempted = () => {
     }, [user?.email])
 
     return (
-        <div className="container mx-auto min-h-[60vh] my-5">
+        <div className="container mx-auto min-h-[60vh] my-5 lg:px-0 md:px-0 px-2">
             <Helmet>
                 <title>Study Loop | My Attempt</title>
             </Helmet>
@@ -28,13 +28,13 @@ const MyAttempted = () => {
             <div className="overflow-x-auto">
                 <table className="table text-center border-2">
                     {/* head */}
-                    <thead>
+                    <thead className="bg-[#f87b4aca]">
                         <tr>
-                            <th className="border-r-2 text-base text-black">Title</th>
-                            <th className="border-r-2 text-base text-black">Mark</th>
-                            <th className="border-r-2 text-base text-black">Obtain Mark</th>
-                            <th className="border-r-2 text-base text-black">Status</th>
-                            <th className="border-r-2 text-base text-black">Feedback</th>
+                            <th className="border-r-2 text-base text-white">Title</th>
+                            <th className="border-r-2 text-base text-white">Mark</th>
+                            <th className="border-r-2 text-base text-white">Obtain Mark</th>
+                            <th className="border-r-2 text-base text-white">Status</th>
+                            <th className="border-r-2 text-base text-white">Feedback</th>
                         </tr>
                     </thead>
                     <tbody>

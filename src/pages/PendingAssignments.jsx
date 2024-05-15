@@ -27,7 +27,7 @@ const PendingAssignments = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className="bg-gray-200">
+                    <thead className="bg-[#f87b4a91] text-white md:text-lg">
                         <tr>
                             <th>Title</th>
                             <th>Mark</th>

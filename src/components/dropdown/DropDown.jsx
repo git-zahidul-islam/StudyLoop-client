@@ -3,33 +3,40 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 // Handler hook for when Outside click dropdown close
-let useClickOutside = (handler) => {
-    let domNode = useRef();
-    useEffect(() => {
-        let maybeHandler = (event) => {
-            if (!domNode.current.contains(event.target)) {
-                handler();
-            }
-        };
-        document.addEventListener("mousedown", maybeHandler);
-        return () => {
-            document.removeEventListener("mousedown", maybeHandler);
-        };
-    });
+// let useClickOutside = (handler) => {
+//     let domNode = useRef();
+//     useEffect(() => {
+//         let maybeHandler = (event) => {
+//             if (!domNode.current.contains(event.target)) {
+//                 handler();
+//             }
+//         };
+//         document.addEventListener("mousedown", maybeHandler);
+//         return () => {
+//             document.removeEventListener("mousedown", maybeHandler);
+//         };
+//     });
 
-    return domNode;
-};
+//     return domNode;
+// };
 // Handler hook for when Outside click dropdown close End Code====>>
-
 
 
 const Dropdown = ({ handleLogout }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const {user} = useContext(AuthContext)
 
-    let domNode = useClickOutside(() => {
-        setDropdownOpen(false);
-    });
+    // let domNode = useClickOutside(() => {
+    //     setDropdownOpen(false);
+    // });
+
+    const toggleDropDown = () => {
+        setDropdownOpen(!dropdownOpen)
+    }
+
+    const handleMyAttamptClick =()=>{
+        toggleDropDown()
+    }
 
     return (
         <>
@@ -38,7 +45,7 @@ const Dropdown = ({ handleLogout }) => {
                 <div className="container">
                     <div className="flex flex-wrap">
                         {/* one */}
-                        <div ref={domNode} className="w-full">
+                        <div  className="w-full">
                             <div className="text-center">
                                 <div className="relative inline-block text-left">
                                     <button
@@ -57,7 +64,7 @@ const Dropdown = ({ handleLogout }) => {
                                             : "top-[110%] invisible opacity-0"
                                             }`}
                                     >
-                                        <button className="px-3 py-2 w-full hover:bg-slate-300"><Link to={'/my-attempted'}>My Attempt</Link></button>
+                                        <button onClick={handleMyAttamptClick} className="px-3 py-2 w-full hover:bg-slate-300" ><Link to={'/my-attempted'}>My Attempt</Link></button>
                                         <button className="px-3 py-2 w-full hover:bg-slate-300" onClick={handleLogout}>Logout</button>
 
                                     </div>
@@ -75,13 +82,13 @@ const Dropdown = ({ handleLogout }) => {
 
 export default Dropdown;
 
-const DropdownItem = ({ label, href }) => {
-    return (
-        <a
-            href={href}
-            className="text-body-color dark:text-dark-6 hover:bg-[#F5F7FD] dark:hover:bg-primary/5 hover:text-primary block px-5 py-2 text-base"
-        >
-            {label}
-        </a>
-    );
-};
+// const DropdownItem = ({ label, href }) => {
+//     return (
+//         <a
+//             href={href}
+//             className="text-body-color dark:text-dark-6 hover:bg-[#F5F7FD] dark:hover:bg-primary/5 hover:text-primary block px-5 py-2 text-base"
+//         >
+//             {label}
+//         </a>
+//     );
+// };
