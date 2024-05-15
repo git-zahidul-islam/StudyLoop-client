@@ -10,14 +10,14 @@ import photo2 from "../../assets/student2.png"
 import photo3 from "../../assets/student3.png"
 
 
-const heading1 = 'Welcome to Study Loop - Elevate Your Learning Experience'
-const heading2 = 'Where Learning Meets Efficiency'
-const heading3 = 'Discover and navigate Your Academic Journey'
-// description
-const des1 = 'Experience a seamless blend of technology and education at Study Loop. Elevate your learning journey with interactive tools, personalized resources, and a supportive community dedicated to academic excellence.'
-const des2 = 'Embark on a journey of efficiency and productivity with Study Loop. Join a dynamic platform where learning is optimized through intuitive features, streamlined processes, and collaborative opportunities.'
-const des3 = 'Navigate your academic path with confidence on Study Loop. Discover a platform designed to guide you through every step of your educational journey, offering resources, support, and opportunities for growth.'
+const heading1 = <h1>Welcome to <span className='text-[#F87B4A]'>Study Loop</span> - Elevate Your Learning Experience</h1>
+const heading2 = <h1>Where Learning Meets <span className='text-[#F87B4A]'>Efficiency</span></h1>
+const heading3 = <h1>Discover and <span className='text-[#F87B4A]'>navigate</span> Your Academic Journey</h1>
 
+// description
+const des1 = <p>Experience a seamless blend of technology and education at Study Loop. Elevate your learning journey with interactive tools, personalized resources, and a supportive community dedicated to academic excellence.</p>
+const des2 = <p>Embark on a journey of efficiency and productivity with Study Loop. Join a dynamic platform where learning is optimized through intuitive features, streamlined processes, and collaborative opportunities.</p>
+const des3 = <p>Navigate your academic path with confidence on Study Loop. Discover a platform designed to guide you through every step of your educational journey, offering resources, support, and opportunities for growth.</p>
 
 const Slider = () => {
     

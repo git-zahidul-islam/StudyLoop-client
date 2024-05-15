@@ -1,6 +1,4 @@
 
-import bg1 from '../../assets/otherIMG/blob-haikei.svg'
-
 const Slide = ({text,des, image}) => {
     return (
         <div className='h-[600px] flex flex-col justify-center'>
@@ -9,8 +7,8 @@ const Slide = ({text,des, image}) => {
                     <div className="items-center lg:flex">
                         <div className="w-full lg:w-1/2">
                             <div className="lg:max-w-lg">
-                                <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">{text}</h1>
-                                <p className="mt-3 text-gray-600 dark:text-gray-400">{des}</p>
+                                <div className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">{text}</div>
+                                <div className="mt-3 text-gray-600 dark:text-gray-400">{des}</div>
                             </div>
                         </div>
 

@@ -36,15 +36,15 @@ const NavBar = () => {
 
 
     const navLink = <div className="flex gap-4 mr-2 lg:flex-row md:flex-row flex-col text-lg font-semibold">
-        <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/assignments'}>Assignments</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "text-[#F87B4A]" : "text-[#000000df]"} to={'/'}>Home</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "text-[#F87B4A]" : "text-[#000000df]"} to={'/assignments'}>Assignments</NavLink></li>
         {
             user &&
-            <li><NavLink to={'/create-assignments'}>Create Assignments</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? "text-[#F87B4A]" : "text-[#000000df]"} to={'/create-assignments'}>Create Assignments</NavLink></li>
         }
         {
             user &&
-            <li><NavLink to={'/pending-assignments'}>Pending Assignments</NavLink></li>
+            <li><NavLink className={({ isActive }) => isActive ? "text-[#F87B4A]" : "text-[#000000df]"} to={'/pending-assignments'}>Pending Assignments</NavLink></li>
         }
     </div>
 

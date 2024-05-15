@@ -1,34 +1,11 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
-
-// Handler hook for when Outside click dropdown close
-// let useClickOutside = (handler) => {
-//     let domNode = useRef();
-//     useEffect(() => {
-//         let maybeHandler = (event) => {
-//             if (!domNode.current.contains(event.target)) {
-//                 handler();
-//             }
-//         };
-//         document.addEventListener("mousedown", maybeHandler);
-//         return () => {
-//             document.removeEventListener("mousedown", maybeHandler);
-//         };
-//     });
-
-//     return domNode;
-// };
-// Handler hook for when Outside click dropdown close End Code====>>
 
 
 const Dropdown = ({ handleLogout }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const {user} = useContext(AuthContext)
-
-    // let domNode = useClickOutside(() => {
-    //     setDropdownOpen(false);
-    // });
 
     const toggleDropDown = () => {
         setDropdownOpen(!dropdownOpen)
@@ -81,14 +58,3 @@ const Dropdown = ({ handleLogout }) => {
 };
 
 export default Dropdown;
-
-// const DropdownItem = ({ label, href }) => {
-//     return (
-//         <a
-//             href={href}
-//             className="text-body-color dark:text-dark-6 hover:bg-[#F5F7FD] dark:hover:bg-primary/5 hover:text-primary block px-5 py-2 text-base"
-//         >
-//             {label}
-//         </a>
-//     );
-// };
