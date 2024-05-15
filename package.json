@@ -16,6 +16,7 @@
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
     "react-datepicker": "^6.9.0",
+    "react-doc-viewer": "^0.1.11",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.4",
     "react-helmet-async": "^2.0.5",

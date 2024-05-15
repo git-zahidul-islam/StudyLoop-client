@@ -21,7 +21,7 @@ const AssignCard = ({ assData, handleDelete }) => {
             </div>
 
             <div className="py-3">
-                <h1 className="text-xl font-semibold text-gray-800 dark:text-white">{title}</h1>
+                <h1 className="text-xl min-h-16 font-semibold text-gray-800 dark:text-white">{title}</h1>
                 <div className="text-white font-semibold flex w-full">
                     <div className="w-1/3 text-center bg-purple-300">
                         <Link to={`/update-assignments/${_id}`}>

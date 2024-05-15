@@ -49,8 +49,12 @@ const AssignmentsDetails = () => {
         const data = { assignmentsLink, notes, status: 'pending', email, title, mark, feedback: ' ', obtainMark: ' ', examinee_name: name };
         console.log(data);
 
-        if (assignmentsLink.length < 5) {
-            return toast.error('Give Google Doc link')
+        
+        if (!/^https:\/\/docs\.google\.com\/document\//.test(assignmentsLink)){
+            return toast.error('submit only Google Doc link')
+        }
+        if (notes.length < 2) {
+            return toast.error('Right meaningful notes')
         }
 
         axios.post(`${import.meta.env.VITE_WEBSITE_API}/submit-assignment`, data)
@@ -91,7 +95,7 @@ const AssignmentsDetails = () => {
                         >
                             {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
                             <div className="min-w-96 flex flex-col">
-                                <h1 className="text-center text-xl font-semibold">Submit Your Assignments Link</h1>
+                                <h1 className="text-center text-lg font-semibold">Submit Your Assignments Google Doc Link</h1>
                                 <form onSubmit={handleAssignmentsSubmit}>
                                     <textarea className="resize-none p-4 border-2 w-full" placeholder="enter your assignments links" name="assignmentsLink" id="submit_ass"></textarea>
                                     <div>
@@ -106,8 +110,6 @@ const AssignmentsDetails = () => {
                             </div>
                         </Modal>
                     </div>
-                    {/* modal  */}
-
                 </div>
             </div>
             <div className="space-y-5 mt-5">
