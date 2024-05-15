@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/assignments/:id',
-                element: <AssignmentsDetails></AssignmentsDetails>,
+                element: <PrivateRouter><AssignmentsDetails></AssignmentsDetails></PrivateRouter>,
                 loader: ({ params }) =>
                     fetch(`${import.meta.env.VITE_WEBSITE_API}/assignments/${params.id}`)
             },
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/update-assignments/:id',
-                element: <UpdateAssignments></UpdateAssignments>,
+                element: <PrivateRouter><UpdateAssignments></UpdateAssignments></PrivateRouter>,
                 loader: ({ params }) =>
                     fetch(`${import.meta.env.VITE_WEBSITE_API}/assignments/${params.id}`)
             },
