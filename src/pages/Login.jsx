@@ -30,8 +30,8 @@ const Login = () => {
 
         // login
         userLogin(email, password)
-            .then(result => {
-                console.log("login successfully", result);
+            .then(() => {
+                // console.log("login successfully", result);
                 navigate(location?.state ? location.state : '/')
             })
             .catch(() => {
@@ -42,8 +42,8 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
         loginWithGoogle()
-        .then(result => {
-            console.log(result);
+        .then(() => {
+            // console.log(result);
             navigate(location?.state ? location.state : '/')
         })
         .catch(error => console.error(error))

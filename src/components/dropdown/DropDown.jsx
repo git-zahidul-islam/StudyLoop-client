@@ -36,7 +36,7 @@ const Dropdown = ({ handleLogout }) => {
                                         </div>
                                     </button>
                                     <div
-                                        className={`shadow-1 dark:shadow-box-dark absolute -left-16 z-40 mt-2 w-36 rounded-md bg-[#807182] dark:bg-dark-2  transition-all ${dropdownOpen
+                                        className={`shadow-1 dark:shadow-box-dark absolute -left-16 z-40 mt-2 w-36 rounded-md bg-[#F99670] border-4 border-[#43C9F3] dark:bg-dark-2  transition-all ${dropdownOpen
                                             ? "top-full opacity-100 visible"
                                             : "top-[110%] invisible opacity-0"
                                             }`}

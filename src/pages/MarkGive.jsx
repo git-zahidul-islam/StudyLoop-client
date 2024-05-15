@@ -42,10 +42,10 @@ const MarkGive = () => {
         const feedback = form.feedback.value;
         const status = "completed"
         const markGive = { feedback, obtainMark, status }
-        console.log(markGive);
+        // console.log(markGive);
 
 
-        console.log("date", loaderData);
+        // console.log("date", loaderData);
 
         // validation
         if (obtainMark.length < 1) {
@@ -60,8 +60,8 @@ const MarkGive = () => {
         }
 
         axios.put(`${import.meta.env.VITE_WEBSITE_API}/give-mark/${_id}`, markGive)
-            .then(res => {
-                console.log("mark give done", res.data);
+            .then(() => {
+                // console.log("mark give done", res.data);
                 toast.success('Mark Update Successfully')
                 navigate('/pending-assignments')
             })

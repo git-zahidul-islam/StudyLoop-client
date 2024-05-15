@@ -54,12 +54,10 @@ const Registration = () => {
             setError('Password must have a Lowercase letter')
             return;
         }
-        // const confirm_password = form.confirm_password.value;
-        console.table(name, photo, email, password)
         // register
         createUserWithEmail(email,password)
-        .then(result =>{
-            console.log(result.user);
+        .then(() =>{
+            // console.log(result.user);
             profileUpdate(name,photo)
             .then(() => {
                 setUser({...user, photoURL: photo, displayName: name})

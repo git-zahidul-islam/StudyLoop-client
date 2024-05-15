@@ -6,6 +6,8 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 import { toast } from "react-toastify";
 import { Helmet } from 'react-helmet-async';
+import { AwesomeButton } from 'react-awesome-button';
+import 'react-awesome-button/dist/styles.css';
 
 // modal part
 Modal.setAppElement('#root');
@@ -44,7 +46,7 @@ const AssignmentsDetails = () => {
         const assignmentsLink = form.assignmentsLink.value;
         const notes = form.notes.value;
         const data = { assignmentsLink, notes, status: 'pending', email, title, mark, feedback: ' ', obtainMark: ' ', examinee_name: name };
-        console.log(data);
+        // console.log(data);
 
         
         if (!/^https:\/\/docs\.google\.com\/document\//.test(assignmentsLink)){
@@ -55,8 +57,8 @@ const AssignmentsDetails = () => {
         }
 
         axios.post(`${import.meta.env.VITE_WEBSITE_API}/submit-assignment`, data)
-            .then(res => {
-                console.log("assignments submit", res.data);
+            .then(() => {
+                // console.log("assignments submit", res.data);
                 Swal.fire({
                     title: "Good job!",
                     text: "Assignments Submit Successfully",
@@ -100,8 +102,10 @@ const AssignmentsDetails = () => {
                                         <textarea className="resize-none h-28 w-full border-[1px] p-2" placeholder="types your notes" name="notes" id="notes"></textarea>
                                     </div>
                                     <div className="flex justify-between">
-                                        <button className="px-4 py-1 rounded-2xl border-2 border-pink-600" onClick={closeModal}>close</button>
-                                        <input className="px-4 py-1 rounded-2xl border-2 border-pink-600 cursor-pointer" type="submit" value="Submit" />
+                                        <button className="px-6 py-2 rounded-xl bg-[#F87B4A] shadow-xl" onClick={closeModal}>close</button>
+                                        <AwesomeButton>
+                                        <input className="px-4 py-1 rounded-2xl  cursor-pointer" type="submit" value="Submit" />
+                                        </AwesomeButton>
                                     </div>
                                 </form>
                             </div>

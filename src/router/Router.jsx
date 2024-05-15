@@ -11,12 +11,14 @@ import AssignmentsDetails from "../pages/AssignmentsDetails";
 import UpdateAssignments from "../pages/UpdateAssignments";
 import MarkGive from "../pages/MarkGive";
 import PrivateRouter from "./PrivateRouter";
+import ErrorPage from "../pages/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',

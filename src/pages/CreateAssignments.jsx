@@ -29,7 +29,7 @@ const CreateAssignments = () => {
     const diff = form.diff.value;
     const description = form.description.value;
     const assignmentsInfo = { title, mark, photo, date, diff, description, email }
-    console.log(assignmentsInfo);
+    // console.log(assignmentsInfo);
     // validation 
     if(title.length < 5){
       setError("Type meaningful title")

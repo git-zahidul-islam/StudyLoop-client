@@ -2,7 +2,6 @@ import { MdLibraryAdd } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
-import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import { toast } from "react-toastify";
 import bannerPhoto from "../assets/student3.png"
@@ -15,9 +14,9 @@ const UpdateAssignments = () => {
     // const { user } = useAuth()
     // const email = user?.email;
     const loaderData = useLoaderData()
-    console.log(loaderData);
+    // console.log(loaderData);
     const { title, mark, photo, diff, description, date, _id } = loaderData;
-    console.log(date);
+    // console.log(date);
     const navigate = useNavigate()
 
 
@@ -31,12 +30,12 @@ const UpdateAssignments = () => {
         const diff = form.diff.value;
         const description = form.description.value;
         const assignmentsInfo = { title, mark, photo, date, diff, description }
-        console.log(assignmentsInfo);
+        // console.log(assignmentsInfo);
 
         // fetch use axios
         axios.put(`${import.meta.env.VITE_WEBSITE_API}/assignments/${_id}`, assignmentsInfo)
-            .then(res => {
-                console.log("data post done", res.data);
+            .then(() => {
+                // console.log("data post done", res.data);
                 toast.success('Assignments Update Successfully')
                 navigate('/assignments')
             })

@@ -60,7 +60,7 @@ const Assignments = () => {
             <Helmet>
                 <title>Study Loop | Assignment</title>
             </Helmet>
-            <div className="text-center mb-10 w-2/12 mx-auto">
+            <div className="text-center mb-10  mx-auto">
                 <label htmlFor="select" className="block text-lg font-semibold">Choose Difficulty</label>
                 <select
                     onChange={e => setFilter(e.target.value)}
@@ -72,7 +72,7 @@ const Assignments = () => {
                     <option value='Hard'>Hard</option>
                 </select>
             </div>
-            <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-8">
+            <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-8 lg:px-0 md:px-0 px-2">
                 {
                     data.map(a => <AssignCard
                         handleDelete={handleDelete}

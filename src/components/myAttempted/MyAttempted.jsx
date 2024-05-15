@@ -2,7 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Helmet } from 'react-helmet-async';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+// ..
+AOS.init();
 
 
 const MyAttempted = () => {
@@ -26,7 +29,7 @@ const MyAttempted = () => {
             </Helmet>
             <h1 className="text-lg font-bold">Your Submit Assignments</h1>
             <div className="overflow-x-auto">
-                <table className="table text-center border-2">
+                <table data-aos="zoom-in-up" data-aos-delay="400" className="table text-center border-2">
                     {/* head */}
                     <thead className="bg-[#f87b4aca]">
                         <tr>
