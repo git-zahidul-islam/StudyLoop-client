@@ -71,15 +71,15 @@ const AssignmentsDetails = () => {
 
 
     return (
-        <div className="container mx-auto my-10">
+        <div className="container mx-auto my-10 lg:px-0 md:px-0 px-2">
             <Helmet>
                 <title>Study Loop | {title}</title>
             </Helmet>
-            <div className="flex">
-                <div className="w-8/12 h-[550px]">
+            <div className="flex lg:flex-row md:flex-row flex-col gap-4">
+                <div className="lg:h-[550px] md:h-[540px] h-[400] md:w-8/12">
                     <img className="w-full h-full" src={photo} alt="image" />
                 </div>
-                <div className="w-4/12 border-l-4 border-gray-700 ml-5 px-5 space-y-5 bg-[#F9C7C2]">
+                <div className="md:w-4/12 border-l-4 border-gray-700 md:ml-5 px-5 space-y-5 bg-[#F9C7C2]">
                     <h1 className="text-xl font-semibold">Difficulty Label: {diff}</h1>
                     <h1 className="text-xl font-semibold">Marks: {mark}</h1>
                     <h1 className="text-xl font-semibold">Due Date: {date}</h1>
@@ -93,7 +93,7 @@ const AssignmentsDetails = () => {
                             contentLabel="Example Modal"
                         >
                             {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
-                            <div className="min-w-96 flex flex-col">
+                            <div className="min-w-80 flex flex-col">
                                 <h1 className="text-center text-lg font-semibold">Submit Your Assignments Google Doc Link</h1>
                                 <form onSubmit={handleAssignmentsSubmit}>
                                     <textarea className="resize-none p-4 border-2 w-full" placeholder="enter your assignments links" name="assignmentsLink" id="submit_ass"></textarea>
