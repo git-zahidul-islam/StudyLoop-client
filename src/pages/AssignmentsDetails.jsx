@@ -46,7 +46,7 @@ const AssignmentsDetails = () => {
         const form = e.target;
         const assignmentsLink = form.assignmentsLink.value;
         const notes = form.notes.value;
-        const data = { assignmentsLink, notes, status: 'pending', email, title, mark, feedback: 'wait', obtainMark: 'wait', examinee_name: name };
+        const data = { assignmentsLink, notes, status: 'pending', email, title, mark, feedback: ' ', obtainMark: ' ', examinee_name: name };
         console.log(data);
 
         if (assignmentsLink.length < 5) {

@@ -7,14 +7,16 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import photo from "../assets/student3.png"
 import { Helmet } from 'react-helmet-async';
-
+import { MdOutlineDangerous } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 
 const CreateAssignments = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = useAuth()
+  const [error,setError] = useState(null)
   const email = user?.email;
-
+  const navigate = useNavigate()
 
 
   const handleForm = (e) => {
@@ -27,10 +29,27 @@ const CreateAssignments = () => {
     const diff = form.diff.value;
     const description = form.description.value;
     const assignmentsInfo = { title, mark, photo, date, diff, description, email }
+    console.log(assignmentsInfo);
+    // validation 
+    if(title.length < 5){
+      setError("Type meaningful title")
+      return
+    }
+    if (!/\.(jpg|jpeg|png|gif|bmp)$/i.test(photo)){
+      setError("Give right photo url, support this type: jpg,jpeg,png,gif,bmp")
+      return
+    }
+    if (!/^(3[0-9]|[4-9][0-9]|100)$/.test(mark)){
+      return setError("Give numbers between 30 and 100")
+    }
+    if (description.length <= 200){
+      return setError("writing minimum 200 character & meaningful question")
+    }
 
     // fetch data use axios
     axios.post(`${import.meta.env.VITE_WEBSITE_API}/assignments`, assignmentsInfo, { withCredentials: true })
       .then(() => {
+        navigate('/assignments')
         toast.success('Assignments Added')
       })
       .catch(error => console.error(error))
@@ -49,6 +68,18 @@ const CreateAssignments = () => {
       </div>
       <div className="md:w-8/12 bg-[#F9C7C2] lg:p-10 md:p-10 p-2">
         <h1 className="text-xl font-bold mb-5">Create Assignments</h1>
+        <div className="mb-4">
+          {
+            error &&
+            <div className="border-[1px] border-red-400 text-white bg-red-400 p-2 flex gap-1">
+
+              <MdOutlineDangerous size={21} className="text-red-700 mt-[2px]" />
+              <div>
+                <p>{error}</p>
+              </div>
+            </div>
+          }
+        </div>
         <form onSubmit={handleForm}>
           <div className="">
             <div className="">
@@ -80,7 +111,7 @@ const CreateAssignments = () => {
             </div>
             <div className="col-span-2">
               <label htmlFor="description" className="text-sm">Description</label>
-              <textarea name="description" className="textarea resize-none h-32 w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300 p-2" placeholder="Type your Description"></textarea>
+              <textarea name="description" className="textarea resize-none h-48 w-full rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300 p-2" placeholder="Type your Description"></textarea>
             </div>
           </div>
           <div className="flex justify-end">
