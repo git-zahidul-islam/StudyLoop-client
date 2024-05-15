@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
-
+import { TiArrowMinimise } from "react-icons/ti";
 
 
 const PendingAssignments = () => {
@@ -41,7 +41,7 @@ const PendingAssignments = () => {
                                 <th>{ass.title}</th>
                                 <td>{ass.mark}</td>
                                 <td>{ass?.examinee_name}</td>
-                                <td><Link to={`/pending-assignments/${ass._id}`}><button className="p-2 bg-[#807182] text-white rounded-2xl">Give Mark</button></Link></td>
+                                <td><Link to={`/pending-assignments/${ass._id}`}><button className="p-2 bg-[#f87b4add] text-white rounded-2xl"><TiArrowMinimise size={25}/></button></Link></td>
                             </tr>)
                         }
                     </tbody>

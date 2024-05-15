@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { Helmet } from 'react-helmet-async';
 import Modal from 'react-modal';
 import React from "react";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 // modal part
 Modal.setAppElement('#root');
@@ -87,8 +88,8 @@ const MarkGive = () => {
                             {/* <a href="#" >View PDF</a> */}
                             <button
                                 onClick={openModal}
-                                className="px-3 py-2 bg-[#F9C7C2] mt-5 block text-center rounded-3xl text-black mx-auto"
-                            >View pdf</button>
+                                className="px-3 py-2 text-white bg-[#f87b4ad2] mt-5 flex items-center gap-2 text-center rounded-3xl mx-auto"
+                            ><FaArrowUpRightFromSquare size={25}/>pdf view</button>
                             <Modal
                                 isOpen={modalIsOpen}
                                 // onAfterOpen={afterOpenModal}
