@@ -39,7 +39,7 @@ const Feature = () => {
                                     </div>
                                 </div>
 
-                                <div className="py-3 bg-[#f87b4add] text-white ps-4">
+                            <div className="py-3 bg-[#efe3bf] text-black ps-4">
                                     <h1 className="text-xl">{ass.title.slice(0,35)}</h1>
                                 </div>
                             </div>

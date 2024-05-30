@@ -4,28 +4,29 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Helmet } from 'react-helmet-async';
 import reg_logo from '../assets/otherIMG/Sign-up.png'
 import { MdOutlineDangerous } from "react-icons/md";
+import axios from "axios";
 
 
 const Registration = () => {
     const { createUserWithEmail, profileUpdate, user, setUser } = useContext(AuthContext)
     const navigate = useNavigate()
-    const [error,setError] = useState(null)
+    const [error, setError] = useState(null)
 
     const handleRegister = (e) => {
         e.preventDefault()
         const form = e.target;
         const firstName = form.firstName.value;
         const lastName = form.lastName.value;
-        const name = firstName+" "+lastName;
+        const name = firstName + " " + lastName;
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
         // validation
-        if(firstName.length < 2){
+        if (firstName.length < 2) {
             setError('Type first name')
             return
         }
-        if(lastName.length < 2){
+        if (lastName.length < 2) {
             setError('Type last name')
             return
         }
@@ -55,19 +56,28 @@ const Registration = () => {
             return;
         }
         // register
-        createUserWithEmail(email,password)
-        .then(() =>{
-            // console.log(result.user);
-            profileUpdate(name,photo)
+        createUserWithEmail(email, password)
             .then(() => {
-                setUser({...user, photoURL: photo, displayName: name})
+                // console.log(result.user);
+                profileUpdate(name, photo)
+                    .then(() => {
+                        setUser({ ...user, photoURL: photo, displayName: name })
+                        // for how many user have
+                        const userData = {
+                            name: name,
+                            email: email,
+                        }
+                        axios.post(`${import.meta.env.VITE_WEBSITE_API}/users`,userData)
+                            .then(res => {
+                                console.log("user count", res.data);
+                            })
+                    })
+                    .catch(error => console.error(error))
+                navigate('/')
             })
-            .catch(error=> console.error(error))
-            navigate('/')
-        })
-        .catch(error =>{
-            console.error(error);
-        })
+            .catch(error => {
+                console.error(error);
+            })
         form.reset()
     }
 
@@ -78,7 +88,7 @@ const Registration = () => {
                 <title>Study Loop | Registration</title>
             </Helmet>
             <div className="flex justify-center min-h-screen">
-                <div className="hidden bg-cover lg:block lg:w-2/5" style={{ backgroundImage: `url(${reg_logo})`}}>
+                <div className="hidden bg-cover lg:block lg:w-2/5" style={{ backgroundImage: `url(${reg_logo})` }}>
                 </div>
 
                 <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
@@ -131,7 +141,7 @@ const Registration = () => {
 
                                 <div>
                                     {/* <input name="confirm_password" type="password" placeholder="Enter your password" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" /> */}
-                                    <input type="submit" value="Sign Up" className="cursor-pointer col-span-2 w-full px-6 py-3 text-lg tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#FAA384] rounded-lg hover:bg-[#faa384d3]" />     
+                                    <input type="submit" value="Sign Up" className="cursor-pointer col-span-2 w-full px-6 py-3 text-lg tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#FAA384] rounded-lg hover:bg-[#faa384d3]" />
                                 </div>
 
                                 {/* <input type="submit" value="Sign Up" className="cursor-pointer col-span-2 w-full px-6 py-3 text-lg tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#FAA384] rounded-lg hover:bg-[#faa384d3]" />                              */}

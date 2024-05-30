@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import login_side_image from '../assets/otherIMG/login-side.png'
 import logo from '../assets/otherIMG/logo.png'
 import { MdOutlineDangerous } from "react-icons/md";
+import axios from 'axios';
 
 const Login = () => {
     const { userLogin, loginWithGoogle } = useContext(AuthContext)
@@ -42,8 +43,18 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
         loginWithGoogle()
-        .then(() => {
-            // console.log(result);
+        .then((result) => {
+            console.log(result);
+            const userData = {
+                name: result.user?.displayName,
+                email: result.user?.email,
+            }
+            
+            axios.post(`${import.meta.env.VITE_WEBSITE_API}/users`,userData)
+            .then(res => {
+                console.log("google user",res.data);
+            })
+
             navigate(location?.state ? location.state : '/')
         })
         .catch(error => console.error(error))

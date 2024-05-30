@@ -1,4 +1,5 @@
 import Subscribe from "../../components/subscribe/Subscribe";
+import SummeryStats from "../../components/summeryStats/SummeryStats";
 import Banner from "../banner/Banner";
 import Faq from "../faq/Faq";
 import Feature from "../feature/Feature";
@@ -16,6 +17,9 @@ const Home = () => {
             </div>
             <div className="min-h-96">
                 <Feature></Feature>
+            </div>
+            <div>
+                <SummeryStats></SummeryStats>
             </div>
             <div className="">
                 <Faq></Faq>
